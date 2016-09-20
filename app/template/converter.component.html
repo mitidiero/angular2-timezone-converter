@@ -1,0 +1,20 @@
+<h1>Timezone Converter</h1>
+
+<input type="number" min="0" max="23" [(ngModel)]="timeToConvert" placeholder="Time to convert" (ngModelChange)="onChange($event)" />
+
+<select [(ngModel)]="fromTimezone" (ngModelChange)="onChange($event)" name="fromTimezone">
+  <option [value]="timezone.offset" *ngFor="let timezone of timezones">
+    {{timezone.text}}
+  </option>
+</select>
+
+
+<select [(ngModel)]="toTimezone" (ngModelChange)="onChange($event)" name="toTimezone">
+  <option [value]="timezone.offset" *ngFor="let timezone of timezones">
+    {{timezone.text}}
+  </option>
+</select>
+
+<span *ngIf="convertedTime && convertedTime != -1">
+  Converted Time: {{convertedTime}}
+</span>
